@@ -32,8 +32,10 @@ services:
       - backend
     depends_on:
       - db_data
-
+      - frontend
 
 networks:
   backend:
+    driver: "bridge"
+  frontend:
     driver: "bridge"
