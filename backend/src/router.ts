@@ -1,6 +1,7 @@
 import { Router } from "express";
 
 //controllers
+import CheckUser from "./controllers/CheckUser";
 import GetAllUser from "./controllers/GetAllUsers";
 import GetUser from "./controllers/GetUser";
 import CreateUser from "./controllers/CreateUser";
@@ -22,6 +23,9 @@ router.get('/users', getAllUser.handle);
 
 const getUser = new GetUser;
 router.get('/user/:id', getUser.handle);
+
+const checkUser = new CheckUser;
+router.get('/username/:username', checkUser.handle);
 
 const createUser = new CreateUser;
 router.post('/user', createUser.handle);

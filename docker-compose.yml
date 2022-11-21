@@ -21,7 +21,6 @@ services:
 
   api:
     image: node:16.14
-    
     ports:
      - "3333:3333"
     working_dir: "/home/node/app"
@@ -30,9 +29,22 @@ services:
     command: "npm run dev"
     networks:
       - backend
+      - frontend
     depends_on:
       - db_data
-      - frontend
+
+#  web:
+#    image: node:16.14
+#    ports:
+#     - "3000:5173"
+#    working_dir: "/home/node/app"
+#    volumes: 
+#      - ./frontend:/home/node/app
+#    command: "npm i"
+#    networks:
+#      - frontend
+#    depends_on:
+#      - api
 
 networks:
   backend:
