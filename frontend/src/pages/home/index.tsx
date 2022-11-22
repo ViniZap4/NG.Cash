@@ -1,26 +1,47 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { Title } from "../../styles/components/title";
 import {Container} from "./styles"
-
-import visibleImage from "../../assets/icons/visible.svg"
+import { MessageContext } from '../../context/messageContext';
+import visibleImage from "../../assets/icons/visible-white.svg"
 import axios from "axios";
 import { apiAdress } from "../../services/api";
+import Transferences from "./transferences";
+import Tranference from "./tranference";
+import { UserContext } from "../../context/userContext";
+import { error } from "../../components/Message";
 
 const Home: React.FC = () => {
   const [cookies, setCooke] = useCookies()
   const navigate = useNavigate()
   const [balanceVisible, setBalanceVisible] = useState(false)
   const [balanceValue, setBalanceValue] = useState("***********")
-
-  console.log(cookies.username)
+  const [tranferencesVisible, setTranferencesVisible] = useState(false)
+  const [tranferenceVisible, setTranferenceVisible] = useState(false)
+  const {balance, setBalance} = useContext(UserContext)
+  const {setMessage, setHasMessage, setTime} = useContext(MessageContext)
 
   useEffect(()=>{
     if(cookies.username === undefined ||cookies.username === null || !cookies.username){
       navigate("/login")
     }
+
   },[])
+
+  useEffect(()=>{
+    const interval = setInterval(() => {
+      if(tranferenceVisible){
+        CheckBalance()
+        if(balanceValue !== balance.toString()){
+          setBalanceValue(balance.toString())
+        }
+      }
+    }, 3000);
+
+    return () => clearInterval(interval);
+}, []);
+
 
   async function handleVisible(){
     if(balanceVisible){
@@ -28,24 +49,50 @@ const Home: React.FC = () => {
       setBalanceVisible(false)
       return
     }
-    
-    await axios.get(`${apiAdress}/balance/${cookies.userID}`, {
-      headers: {
-        'Authorization': `token ${cookies.userToken}`
-      }
-    })
-    .then((res) => {
-      console.log(res.data)
-      setBalanceValue(res.data.Account.balance)
-    })
-    .catch((error) => {
-      console.error(error)
-    })
-
+    CheckBalance()
     setBalanceVisible(true)
+
   }
 
+  async function CheckBalance(){
+    try{
+      await axios.get(`${apiAdress}/balance/${cookies.userID}`, {
+        headers: {
+          'Authorization': `token ${cookies.userToken}`
+        }
+      })
+      .then((res) => {
+        setBalanceValue(res.data.Account.balance.toFixed(2))
+        setBalance(res.data.Account.balance.toFixed(2))
+      })
+      .catch((error) => {
+        console.log(error)
+        return
+      })
+    }catch (err){
+      setMessage({ title:"Erro", message:"Esse usuário não existe", type:error })
+      setTime(3)
+      setHasMessage(true)
+    }
+  }
 
+  function switchTransferencesVisible(){
+    if(tranferencesVisible){
+      setTranferencesVisible(false)
+      return
+    }
+    setTranferencesVisible(true)
+    setTranferenceVisible(false)
+  }
+
+  function switchTransferenceVisible(){
+    if(tranferenceVisible){
+      setTranferenceVisible(false)
+      return
+    }
+    setTranferenceVisible(true)
+    setTranferencesVisible(false)
+  }
 
   return(
     <Container>
@@ -64,19 +111,33 @@ const Home: React.FC = () => {
             </div>
             <div className="balance">
               <span className="value">
-                {balanceValue}
+                R$ {balanceValue}
               </span>
             </div>
           </div>
         </div>
         <div className="acctionButtonBox">
-          <button id="makeTransaction" className="acctionButton">
-            transferir
+        {!tranferenceVisible? (
+          <button id="makeTransaction" className="actionButton" onClick={switchTransferenceVisible}>
+            Transferir
           </button>
-          <button id="seeTransation" className="acctionButton">
-            ver transferencias
+        ) :<button id="closeButton" className="actionButton" onClick={switchTransferenceVisible}>
+            Fechar Transferir
           </button>
+        }
+        {!tranferencesVisible? (
+            <button id="seeTransation" className="actionButton" onClick={switchTransferencesVisible}>
+              Ver transferencias
+            </button>
+          ): <button id="closeButton" className="actionButton" onClick={switchTransferencesVisible}>
+               Fechar janela
+             </button>
+          }
+          
         </div>
+        {tranferencesVisible? <Transferences />: <></>}
+        {tranferenceVisible? <Tranference />: <></>}
+
       </div>
     </Container>
   );

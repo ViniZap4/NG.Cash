@@ -27,7 +27,9 @@ export default class MakeTransaction{
     if(!user.Account?.balance || user.Account?.balance < value){
       return res.json({"error": "this account don't have enough funds"});
     }
-   
+    if(value <= 0 ){
+      return res.json({"error": "Invalid value"});
+    }
     const userToCredit = await prisma.user.findUnique({
       where:{
         username: usernameToCredit

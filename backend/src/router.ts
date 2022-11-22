@@ -38,7 +38,7 @@ router.post('/auth', authUser.handle);
 
 //private routes
 const getBalance = new GetBalance;
-router.get('/balance/:id', checkToken, getBalance.handle);
+router.get('/balance/:id', checkToken, getBalance.handle)
 
 const makeTransaction = new MakeTransaction;
 router.post('/transaction/:id', checkToken, makeTransaction.handle);

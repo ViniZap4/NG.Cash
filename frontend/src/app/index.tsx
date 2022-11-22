@@ -13,6 +13,7 @@ import {ThemeProvider } from 'styled-components';
 //import contexts
 import themeContext from '../Contexts/themeContext';
 import MessageContextProvider from "../context/messageContext";
+import UserContextProvider from "../context/userContext";
 
 function App() {
   const {theme} = useContext(themeContext)
@@ -20,10 +21,12 @@ function App() {
   return (<>
     <ThemeProvider theme={theme}>
       <MessageContextProvider>
-        <Animations />
-        <GlobalStyles />
-        <AppRouter />
-      </MessageContextProvider>
+        <UserContextProvider>
+          <Animations />
+          <GlobalStyles />
+          <AppRouter />
+        </UserContextProvider>
+      </MessageContextProvider>     
     </ThemeProvider>
   </>)
 }
