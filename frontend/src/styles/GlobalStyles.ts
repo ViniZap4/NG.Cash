@@ -42,4 +42,10 @@ export default createGlobalStyle`
     outline: none;
   }
 
+  #root{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
 `

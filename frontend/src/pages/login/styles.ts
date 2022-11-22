@@ -9,10 +9,62 @@ export const Container = styled.div`
   height: 100vh;
   background-color: ${props => props.theme.colors.background};
 
-  .title{
-    color: #fff;
-    margin: 1.8vw 0vw;
-    font-size: 6.3vh;
+  .loginBox{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 0.30;
+
+    .loginInput{
+      display: flex;
+      flex-direction: column;
+      background-color: ${props => props.theme.colors.boxBackground};
+      border-radius: 0.9vh;
+      box-shadow: 0px 0px 3vh #000;
+      width: 100%;
+      margin: 0.9vh 0vw;
+      animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
+    }
+  
+    .buttonArea{
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: stretch;
+      justify-content: space-between;
+        
+      min-width: 15vh;
+
+      width: 100%;
+   
+      .loginButton, .backButton{
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 2.1vh;
+
+        margin: 0.9vh 0vw;
+
+        padding: 1.2vh 0.9vw;
+
+        background-color: ${props => props.theme.colors.boxBackground};
+        border-radius: 0.9vh;
+        box-shadow: 0px 0px 3vh #000;
+        animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
+        
+      }
+      .loginButton{
+        flex-grow: 1;
+      }
+      .backButton{
+        margin-right: 0.9vw;
+      }
+    }
+  
   }
+  
 
 `

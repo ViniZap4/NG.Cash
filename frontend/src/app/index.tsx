@@ -12,15 +12,18 @@ import {ThemeProvider } from 'styled-components';
 
 //import contexts
 import themeContext from '../Contexts/themeContext';
+import MessageContextProvider from "../context/messageContext";
 
 function App() {
   const {theme} = useContext(themeContext)
 
   return (<>
     <ThemeProvider theme={theme}>
-      <Animations />
-      <GlobalStyles />
-      <AppRouter />
+      <MessageContextProvider>
+        <Animations />
+        <GlobalStyles />
+        <AppRouter />
+      </MessageContextProvider>
     </ThemeProvider>
   </>)
 }

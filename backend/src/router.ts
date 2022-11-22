@@ -34,7 +34,7 @@ const deleteUser = new DeleteUser;
 router.delete('/account/:id', deleteUser.handle);
 
 const authUser = new AuthUser;
-router.get('/auth', authUser.handle);
+router.post('/auth', authUser.handle);
 
 //private routes
 const getBalance = new GetBalance;

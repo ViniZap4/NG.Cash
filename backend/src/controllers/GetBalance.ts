@@ -34,7 +34,7 @@ export default class GetBalance{
       return res.json(user)
     
     }catch(error){
-      return res.json({"message": `error`});
+      return res.json({"message": `${error}`});
     }
 
   }

@@ -6,7 +6,7 @@ export default{
     secondary: '#161b22',
 
     background: '#272727',
-    boxBacground: '#fff',
+    boxBackground: '#fff',
     text:'#333',
   },
 }

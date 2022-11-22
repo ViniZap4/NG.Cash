@@ -1,4 +1,4 @@
-import React, { FormEvent, useEffect, useState } from 'react';
+import React, { FormEvent, useContext, useState } from 'react';
 import axios from 'axios';
 
 import { PasswordInputs } from './input/password';
@@ -6,21 +6,32 @@ import { Container } from './styles';
 import { apiAdress } from '../../services/api';
 import { Title } from '../../styles/components/title';
 import { InputText } from '../../styles/components/inputText';
+import { error, simpleMessage, warnig } from '../../components/Message';
+import { MessageContext } from '../../context/messageContext';
+import { LabelText } from '../../styles/components/label';
 
 const SignUp: React.FC = () => {
-  const [username, setUsername] = useState("@username")
- 
+  const [username, setUsername] = useState("username")
   const [isEnable, setIsEnable] = useState(false)
+  const {setMessage, setHasMessage, setTime} = useContext(MessageContext)
 
   async function CheckUsername(event: {[k:string]: FormDataEntryValue}){
     try{
       await axios(`${apiAdress}/username/${event.username}`).then(response => {
-        setIsEnable(response.data.username === null? true: false)
-        if(response.data.username !== null){alert("usuário já existe")}
+        if(response.data.username !== null){
+          setMessage({ title:"Este usuário já existe!", message:"Tende criar um outro username.", type:warnig })
+          setTime(3)
+          setHasMessage(true)
+          setIsEnable(false)
+        }else{
+          setIsEnable(true)
+        }
         setUsername(event.username.toString())
       })
     }catch (err){
-      console.log("can't communicate with server")
+      setMessage({ title:"Erro no cadastro", message:"Não foi possível comunicar com o servidor, tente novamente mais tarde", type:error })
+      setTime(3)
+      setHasMessage(true)
     }
   }
 
@@ -35,19 +46,22 @@ const SignUp: React.FC = () => {
     }
 
     if(data.password !== data.comfirmPassword){
-      alert("passwords don't match")
+      setMessage({ title:"Erro no cadastro", message:"As senhas não coincidem.", type:error })
+      setTime(3)
+      setHasMessage(true)
       return
     }
 
-    await axios.post(`${apiAdress}/user`, {       
+    await axios.post(`${apiAdress}/user`, { 
       username : username,
       password: data.password,
       comfirmPassword:data.comfirmPassword
     })
     .then(function (response) {
       console.log(response);
-
-      alert("usuário criado com sucesso!")
+      setMessage({ title:`Boas notícias ${response.data.username}!` , message: "Sua conta foi criada com sucesso!", type:simpleMessage })
+      setTime(4.5)
+      setHasMessage(true)
     })
     .catch(function (error) {
       console.log(error);
@@ -56,12 +70,14 @@ const SignUp: React.FC = () => {
 
   return (
     <Container>
-      <Title> Bem Vindo a NG.CASH! </Title>
+      <Title color="#fff"> Bem Vindo a NG.CASH! </Title>
+
       <form onSubmit={handleCreateUser} id='signUpBox'>
-        <Title> Cadastro: </Title>
+        <Title color="#fff"> Cadastro: </Title>
 
         <span id="inputUsername" className='signUpInput'>
-          <label htmlFor="username"> Username:</label>
+          <LabelText htmlFor="username"> Username:</LabelText>
+
           <InputText required={true} disabled={isEnable} type="text" maxLength={30} minLength={3} name="username" placeholder="@username" />
         </span>
 

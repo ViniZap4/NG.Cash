@@ -6,7 +6,6 @@ import { sign } from "jsonwebtoken";
 
 export default class AuthUser{
   async handle(req: Request, res: Response){
-
     try{
       const {username, password} = req.body;
 
@@ -15,13 +14,12 @@ export default class AuthUser{
           username: username
         }
       })
-
       if(user === null){
-        return res.status(404).json({"error": "this user don't exist"});
+        return res.status(404).json({"error": "Esse usuário não existe"});
       }
 
       if(!(await compare(password, user.password))){
-        return res.status(422).json({"error": "password mismatch"});
+        return res.status(422).json({"error": "senha inválida"});
       }
 
 
@@ -33,8 +31,8 @@ export default class AuthUser{
             id: user.id
           }, secrect, { expiresIn: (60 * 60)*24 });
 
-          res.status(201).json({
-            "message": "Autentication realized successfully",
+          return res.status(201).json({
+            "message": "Autenticação realidada com sucesso",
             "token": token
           })
         }else{
@@ -44,11 +42,8 @@ export default class AuthUser{
       }catch{
         return res.status(422).json(`ERROR`);
       }
-
-      return res.status(201).json(user);
-
     }catch(error){
-      return res.status(422).json({"error": `All input shield are required`});
+      return res.status(422).json({"error": `Error with server`});
     }
 
   }

@@ -3,12 +3,11 @@ import styled from "styled-components";
 export const InputText = styled.input`
   font-size: 2.1vh;
   border: none;
-  margin: 0.45vh 0.9vw;
-  margin-bottom: 1.2vh;
+  margin: 1.2vh 1.2vw;
+  margin-bottom: 3vh;
   border-bottom: 0.36vh solid #ccc;
   color: ${props => props.theme.colors.text};
   &:focus{
     border-bottom: 0.36vh solid ${props => props.theme.colors.text};
-
   }
 `
