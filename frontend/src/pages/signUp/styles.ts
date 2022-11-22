@@ -39,8 +39,6 @@ export const Container = styled.div`
       flex-direction: row-reverse;
       align-items: stretch;
       justify-content: space-between;
-        
-      min-width: 15vh;
 
       width: 100%;
    

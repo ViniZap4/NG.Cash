@@ -10,10 +10,14 @@ import { error, simpleMessage, warnig } from '../../components/Message';
 import { MessageContext } from '../../context/messageContext';
 import { LabelText } from '../../styles/components/label';
 
+import { useNavigate } from "react-router-dom";
+
+
 const SignUp: React.FC = () => {
   const [username, setUsername] = useState("username")
   const [isEnable, setIsEnable] = useState(false)
   const {setMessage, setHasMessage, setTime} = useContext(MessageContext)
+  const navigate = useNavigate()
 
   async function CheckUsername(event: {[k:string]: FormDataEntryValue}){
     try{
@@ -62,6 +66,7 @@ const SignUp: React.FC = () => {
       setMessage({ title:`Boas notícias ${response.data.username}!` , message: "Sua conta foi criada com sucesso!", type:simpleMessage })
       setTime(4.5)
       setHasMessage(true)
+      navigate("/login")
     })
     .catch(function (error) {
       console.log(error);
@@ -84,7 +89,7 @@ const SignUp: React.FC = () => {
         {isEnable? <PasswordInputs />:<></>}
 
         <div className='buttonArea'>
-          <button className='signUpButton'> Próximo </button>
+          <button className='signUpButton'>  {isEnable? "Cadastrar" : "Próximo"} </button>
           {isEnable?<button onClick={() => setIsEnable(false)} className='backButton'> Voltar </button>:<></>}
         </div>
       </form>

@@ -12,7 +12,9 @@ export const Container = styled.div`
   .loginBox{
     display: flex;
     flex-direction: column;
-    flex-grow: 0.30;
+    flex-grow: 0.6;
+    min-width: 27vw;
+    max-width: 200px;
 
     .loginInput{
       display: flex;
@@ -31,8 +33,6 @@ export const Container = styled.div`
       flex-direction: row-reverse;
       align-items: stretch;
       justify-content: space-between;
-        
-      min-width: 15vh;
 
       width: 100%;
    

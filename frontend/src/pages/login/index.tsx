@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { FormEvent, useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { error, simpleMessage, warnig } from '../../components/Message';
 import { MessageContext } from '../../context/messageContext';
 import { apiAdress } from '../../services/api';
@@ -16,6 +17,8 @@ const Login: React.FC = () => {
   const [userToken, setUserToken] = usePersistedState("userToken", "");
   const [isEnable, setIsEnable] = useState(false)
   const {setMessage, setHasMessage, setTime} = useContext(MessageContext)
+  const navigate = useNavigate();
+
 
   async function CheckUsername(event: {[k:string]: FormDataEntryValue}){
     try{
@@ -62,11 +65,12 @@ const Login: React.FC = () => {
       setMessage({ title:`Olá ${username}!` , message: "Você já está logado!", type:simpleMessage })
       setTime(4.5)
       setHasMessage(true)
+      navigate("/")
     })
     .catch(function (err){
       console.log(err);
       setMessage({ title:`Erro` , message:err.response.data.error , type:error })
-      setTime(4.5)
+      setTime(5)
       setHasMessage(true)
     });
   
@@ -87,7 +91,7 @@ const Login: React.FC = () => {
 
         
         <div className='buttonArea'>
-          <button className='loginButton'> {isEnable? "Próximo": "Entrar" } </button>
+          <button className='loginButton'> {isEnable? "Entrar" : "Próximo"} </button>
           {isEnable?<button onClick={() => setIsEnable(false)} className='backButton'> Voltar </button>:<></>}
         </div>
       </form>
