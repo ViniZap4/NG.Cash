@@ -7,14 +7,20 @@ import { apiAdress } from '../../services/api';
 import { InputText } from '../../styles/components/inputText';
 import { LabelText } from '../../styles/components/label';
 import { Title } from '../../styles/components/title';
-import usePersistedState from '../../util/usePersistedState';
+import usePersistedStateCookie from '../../util/usePersistedStateCookie';
 import { PasswordInput } from '../signUp/input/password';
+import { useCookies } from "react-cookie";
 
 import { Container } from './styles';
 
+
 const Login: React.FC = () => {
-  const [username, setUsername] = usePersistedState("username", "")
-  const [userToken, setUserToken] = usePersistedState("userToken", "");
+  
+  const tomorrow = new Date()
+  tomorrow.setDate(tomorrow.getDate() + 1)
+
+  const  [cookie ,setCookie] = useCookies()
+  const [username, setUsername] = useState("username") 
   const [isEnable, setIsEnable] = useState(false)
   const {setMessage, setHasMessage, setTime} = useContext(MessageContext)
   const navigate = useNavigate();
@@ -30,11 +36,10 @@ const Login: React.FC = () => {
           setIsEnable(false)
           return
         }
-
         setIsEnable(true)
         setUsername(event.username.toString())
-        
-        
+        setCookie("username",event.username.toString(), {expires: tomorrow});     
+
       })
     }catch (err){
       setMessage({ title:"Erro no login", message:"Não foi possível comunicar com o servidor, tente novamente mais tarde", type:error })
@@ -61,7 +66,8 @@ const Login: React.FC = () => {
     })
     .then(function (response) {
       console.log(response);
-      setUserToken(response.data.token)
+      setCookie("userToken",response.data.token, {expires: tomorrow});
+      setCookie("userID",response.data.id, {expires: tomorrow});
       setMessage({ title:`Olá ${username}!` , message: "Você já está logado!", type:simpleMessage })
       setTime(4.5)
       setHasMessage(true)
@@ -89,7 +95,6 @@ const Login: React.FC = () => {
         </div>
         {isEnable?<PasswordInput label="Sua senha" placeholder="Digite a sua senha." name="password" />:<></>}
 
-        
         <div className='buttonArea'>
           <button className='loginButton'> {isEnable? "Entrar" : "Próximo"} </button>
           {isEnable?<button onClick={() => setIsEnable(false)} className='backButton'> Voltar </button>:<></>}

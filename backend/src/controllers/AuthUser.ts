@@ -32,6 +32,7 @@ export default class AuthUser{
           }, secrect, { expiresIn: (60 * 60)*24 });
 
           return res.status(201).json({
+            "id": user.id,
             "message": "Autenticação realidada com sucesso",
             "token": token
           })
