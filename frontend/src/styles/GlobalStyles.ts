@@ -14,6 +14,11 @@ export default createGlobalStyle`
     border: border-box;
     transition: 0.3s;
   }
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
   body {
     margin: 0;
@@ -22,6 +27,7 @@ export default createGlobalStyle`
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
 
   code {

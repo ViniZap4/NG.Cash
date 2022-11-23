@@ -23,7 +23,9 @@ export const Container = styled.div<propsStyle>`
     font-weight: bold;
   }
   .text{
+    display: block;
+    margin: 0.9vh 0.9vw;
     font-size: 1.8vh;
-
+    
   }
 `

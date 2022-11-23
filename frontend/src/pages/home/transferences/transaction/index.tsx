@@ -11,17 +11,47 @@ function Transaction(props: {
     value: string,
     debitedaccountId: string,
     creditedaccountId: string,
+    createdAt: string,
+  },
+  filter:{
+    credited: boolean,
+    debited: boolean
+    date?: string
   }
 }){
   const [cookies, setCookies] = useCookies()
   const [isDebited, setIsDebited] = useState(false)
   const [username, setUsername] = useState()
 
+  const date = new Date(props.content.createdAt)
+  
+  const day = date.getDate()
+  const year = date.getFullYear()
+  const month = (date.getMonth()+1)
+  const hour = date.getHours() < 10? "0" + date.getHours(): date.getHours()
+  const minutes = date.getMinutes() < 10? "0" + date.getMinutes(): date.getMinutes()
+  const now = new Date()
+
   useEffect(()=>{
     getUser()
     getCredited()
-    
   },[])
+
+
+  if(props.filter.date !== undefined){
+    
+    if((props.filter.date === "year" && year !== now.getFullYear()) 
+                                    ||
+        (props.filter.date === "month" && month !== now.getMonth()+1)
+                                    ||
+        (props.filter.date === "day" && day !== now.getDate())
+    ){
+      return <></>
+    }
+  } 
+  
+
+
 
   async function getUser(){
     try{
@@ -59,19 +89,30 @@ function Transaction(props: {
       console.log(err);
     }
   }
-  return(
-    <Container isDebited={isDebited} key={props.content.id}>
-      <span className='title'>{isDebited? "Debitado" : "Credidado"}:</span>
-      <div className="content">
-        <span className='text'>
-          O valor de {isDebited? "-" : "+"} R${props.content.value}
-          {isDebited? " para " : " de "}
-          <b>{username}</b>
-          </span>
-      </div>
+
+ 
+
+  if((isDebited && props.filter.debited ) || (!isDebited && props.filter.credited )) {
+    return(
+      <Container isDebited={isDebited} key={props.content.id}>
+        <span className='title'>{isDebited? "Debitado" : "Credidado"}:</span>
+        <div className="content">
+          <span className='text'>
+            O foi {isDebited? "Debitado" : "Credidado"} valor de 
+            <b>{isDebited? " -" : " +"} R${props.content.value}</b>
       
-    </Container>
-  )
+            {isDebited? " para " : " pelo "}
+            <b>{username}</b>.
+          </span>
+          <span className='text'>
+            No dia  <b> {day}/{month}/{year} às {hour}:{minutes}. </b>
+          </span>
+        </div>
+      </Container>
+    )
+  }else{
+    return <></>
+  }
 }
 
 export default Transaction;

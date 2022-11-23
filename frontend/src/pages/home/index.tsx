@@ -132,7 +132,6 @@ const Home: React.FC = () => {
                Fechar janela
              </button>
           }
-          
         </div>
         {tranferencesVisible? <Transferences />: <></>}
         {tranferenceVisible? <Tranference />: <></>}
