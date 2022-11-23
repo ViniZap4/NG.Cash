@@ -19,15 +19,20 @@ export const Container = styled.div`
     justify-content: space-evenly;
     width: 100%;
     margin-top: 2.1vh;
-    .debitedBox{
+
+    .filters{
       display: flex;
-      flex-direction: column;
-      align-content: stretch;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
     }
-    .transaction{
-      display: flex;
-      flex-direction: column;
     
+    .contentsBox{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: stretch;
+      
     }
   }
 

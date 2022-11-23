@@ -8,7 +8,7 @@ import visibleImage from "../../assets/icons/visible-white.svg"
 import axios from "axios";
 import { apiAdress } from "../../services/api";
 import Transferences from "./transferences";
-import Tranference from "./tranference";
+import Tranference from "./chachOut";
 import { UserContext } from "../../context/userContext";
 import { error } from "../../components/Message";
 
@@ -26,7 +26,6 @@ const Home: React.FC = () => {
     if(cookies.username === undefined ||cookies.username === null || !cookies.username){
       navigate("/login")
     }
-
   },[])
 
   useEffect(()=>{
