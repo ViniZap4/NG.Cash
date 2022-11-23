@@ -9,4 +9,11 @@ export const Title = styled.h1<titleStyle>`
   margin: 1.8vw 0vw;
   font-size: 6.3vh;
 
+  @media screen and (orientation: portrait){  
+   
+    font-size: 4.5vw;
+    
+  }
+
+
 `

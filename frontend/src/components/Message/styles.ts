@@ -38,4 +38,8 @@ export const Container = styled.div<styleType>`
     margin: 1.9vh 0.9vw;
 
   }
+
+  @media screen and (orientation: portrait){  
+     max-width: 80vw;
+  }
 `

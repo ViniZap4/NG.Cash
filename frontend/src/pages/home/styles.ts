@@ -119,7 +119,11 @@ export const Container = styled.div`
         
       }
     }
-    
+  }
 
+  @media screen and (orientation: portrait){
+    .accountBox{
+      width: 90vw;
+    }
   }
 `

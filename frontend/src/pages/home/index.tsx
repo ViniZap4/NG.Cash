@@ -121,7 +121,7 @@ const Home: React.FC = () => {
             Transferir
           </button>
         ) :<button id="closeButton" className="actionButton" onClick={switchTransferenceVisible}>
-            Fechar Transferir
+              Fechar janela
           </button>
         }
         {!tranferencesVisible? (

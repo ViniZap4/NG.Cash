@@ -28,4 +28,5 @@ export const Container = styled.div<propsStyle>`
     font-size: 1.8vh;
     
   }
+
 `

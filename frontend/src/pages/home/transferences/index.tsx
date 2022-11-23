@@ -19,13 +19,9 @@ const Transferences: React.FC = () => {
   const [cookies, setCooke] = useCookies()
   const [dataContent, setDataContent] = useState<transaction[]>([])
 
-
   useEffect(()=>{
     getTransactions()
-    
   },[])
-
-
 
   async function getTransactions(){
     await axios.get(`${apiAdress}/balance/${cookies.userID}`, {
@@ -36,7 +32,11 @@ const Transferences: React.FC = () => {
     .then((res) => {
       const debitedTransactions = res.data.Account.debitedTransactions
       const creditedTransactions = res.data.Account.creditedTransactions
-      setDataContent(debitedTransactions.concat(creditedTransactions))
+      const fusionDate = debitedTransactions.concat(creditedTransactions)
+      const data = fusionDate.sort((a:transaction,b:transaction) => (a.createdAt > b.createdAt)? -1 : 1)
+      setDataContent(data)
+      console.log(data)
+      
 
     })
     .catch((error) => {

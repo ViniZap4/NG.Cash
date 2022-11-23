@@ -16,7 +16,6 @@ export const Container = styled.div`
     justify-content: flex-start;
     flex-grow: 0.6;
     min-width: 27vw;
-    max-width: 200px;
     background-color: ${props => props.theme.colors.background};
 
     .signUpInput {
@@ -70,5 +69,10 @@ export const Container = styled.div`
       }
     }
   }
-
+  @media screen and (orientation: portrait){
+    
+    #signUpBox{
+      width: 81vw;
+    }
+  }
 `

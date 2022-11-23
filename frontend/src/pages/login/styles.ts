@@ -14,7 +14,7 @@ export const Container = styled.div`
     flex-direction: column;
     flex-grow: 0.6;
     min-width: 27vw;
-    max-width: 200px;
+    width: 200px;
 
     .loginInput{
       display: flex;
@@ -66,5 +66,9 @@ export const Container = styled.div`
   
   }
   
-
+  @media screen and (orientation: portrait){
+    .loginBox{
+      width: 81vw;
+    }
+  }
 `
