@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { FormEvent, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { error, simpleMessage, warnig } from '../../components/Message';
-import { MessageContext } from '../../contexts/messageContext';
+import { MessageContext } from '../../Context/messageContext';
 import { apiAdress } from '../../services/api';
 import { InputText } from '../../styles/components/inputText';
 import { LabelText } from '../../styles/components/label';

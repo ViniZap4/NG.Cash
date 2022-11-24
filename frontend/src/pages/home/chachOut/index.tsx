@@ -2,13 +2,13 @@ import axios from 'axios';
 import React, { FormEvent, useContext, useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import { error, simpleMessage, warnig } from '../../../components/Message';
-import { MessageContext } from '../../../contexts/messageContext';
+import { MessageContext } from '../../../Context/messageContext';
 import { apiAdress } from '../../../services/api';
 import { InputText } from '../../../styles/components/inputText';
 import { LabelText } from '../../../styles/components/label';
 
 import { Container } from './styles';
-import { UserContext } from "../../../contexts/userContext";
+import { UserContext } from "../../../Context/userContext";
 
 const Tranference: React.FC = () => {
   const [cookies, setCooke] = useCookies()

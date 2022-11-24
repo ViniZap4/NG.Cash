@@ -59,4 +59,3 @@ E para as transições se é checado o valor do usuário antes de abilitar para 
 ![transações](./ReadmeAssets/transacation.gif)
 
 ---
-

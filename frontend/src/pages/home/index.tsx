@@ -3,13 +3,13 @@ import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { Title } from "../../styles/components/title";
 import {Container} from "./styles"
-import { MessageContext } from '../../contexts/messageContext';
+import { MessageContext } from '../../Context/messageContext';
 import visibleImage from "../../assets/icons/visible/visible-white.svg"
 import axios from "axios";
 import { apiAdress } from "../../services/api";
 import Transferences from "./transferences";
 import Tranference from "./chachOut";
-import { UserContext } from "../../contexts/userContext";
+import { UserContext } from "../../Context/userContext";
 import { error } from "../../components/Message";
 
 const Home: React.FC = () => {

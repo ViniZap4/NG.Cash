@@ -6,7 +6,7 @@ import { apiAdress } from '../../services/api';
 import { Title } from '../../styles/components/title';
 import { InputText } from '../../styles/components/inputText';
 import { error, simpleMessage, warnig } from '../../components/Message';
-import { MessageContext } from '../../contexts/messageContext';
+import { MessageContext } from '../../Context/messageContext';
 import { LabelText } from '../../styles/components/label';
 import { useNavigate } from "react-router-dom";
 import { useCookies } from 'react-cookie';

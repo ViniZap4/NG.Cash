@@ -11,9 +11,9 @@ import GlobalStyles from "../styles/GlobalStyles"
 import {ThemeProvider } from 'styled-components';
 
 //import contexts
-import themeContext from "../contexts/themeContext";
-import MessageContextProvider from "../contexts/messageContext";
-import UserContextProvider from "../contexts/userContext";
+import themeContext from "../Context/themeContext";
+import MessageContextProvider from "../Context/messageContext";
+import UserContextProvider from "../Context/userContext";
 import Menu from "../components/Menu";
 
 function App() {
