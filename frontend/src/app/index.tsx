@@ -11,9 +11,10 @@ import GlobalStyles from "../styles/GlobalStyles"
 import {ThemeProvider } from 'styled-components';
 
 //import contexts
-import themeContext from '../Contexts/themeContext';
-import MessageContextProvider from "../context/messageContext";
-import UserContextProvider from "../context/userContext";
+import themeContext from '../contexts/themeContext';
+import MessageContextProvider from "../contexts/messageContext";
+import UserContextProvider from "../contexts/userContext";
+import Menu from "../components/Menu";
 
 function App() {
   const {theme} = useContext(themeContext)
@@ -22,6 +23,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <MessageContextProvider>
         <UserContextProvider>
+          <Menu />
           <Animations />
           <GlobalStyles />
           <AppRouter />

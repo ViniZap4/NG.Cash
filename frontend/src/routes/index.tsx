@@ -10,6 +10,7 @@ import SignUp from '../pages/signUp'
 import Login from '../pages/login'
 
 const AppRouter: React.FC = () => {
+  
   return(
     <BrowserRouter>
       <Routes>

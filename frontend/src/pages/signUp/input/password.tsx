@@ -1,7 +1,7 @@
 import { InputText } from "../../../styles/components/inputText"
 
 import { warnig } from '../../../components/Message';
-import { MessageContext } from '../../../context/messageContext';
+import { MessageContext } from '../../../contexts/messageContext';
 import { useContext } from "react";
 import { LabelText } from "../../../styles/components/label";
 

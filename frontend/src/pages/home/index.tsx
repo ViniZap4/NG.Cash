@@ -3,17 +3,17 @@ import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { Title } from "../../styles/components/title";
 import {Container} from "./styles"
-import { MessageContext } from '../../context/messageContext';
-import visibleImage from "../../assets/icons/visible-white.svg"
+import { MessageContext } from '../../contexts/messageContext';
+import visibleImage from "../../assets/icons/visible/visible-white.svg"
 import axios from "axios";
 import { apiAdress } from "../../services/api";
 import Transferences from "./transferences";
 import Tranference from "./chachOut";
-import { UserContext } from "../../context/userContext";
+import { UserContext } from "../../contexts/userContext";
 import { error } from "../../components/Message";
 
 const Home: React.FC = () => {
-  const [cookies, setCooke] = useCookies()
+  const [cookies] = useCookies()
   const navigate = useNavigate()
   const [balanceVisible, setBalanceVisible] = useState(false)
   const [balanceValue, setBalanceValue] = useState("***********")
@@ -32,11 +32,8 @@ const Home: React.FC = () => {
     const interval = setInterval(() => {
       if(tranferenceVisible){
         CheckBalance()
-        if(balanceValue !== balance.toString()){
-          setBalanceValue(balance.toString())
-        }
       }
-    }, 3000);
+    }, 5000);
 
     return () => clearInterval(interval);
 }, []);
@@ -63,6 +60,7 @@ const Home: React.FC = () => {
       .then((res) => {
         setBalanceValue(res.data.Account.balance.toFixed(2))
         setBalance(res.data.Account.balance.toFixed(2))
+        console.log("check")
       })
       .catch((error) => {
         console.log(error)

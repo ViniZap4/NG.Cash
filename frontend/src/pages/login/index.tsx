@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { FormEvent, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { error, simpleMessage, warnig } from '../../components/Message';
-import { MessageContext } from '../../context/messageContext';
+import { MessageContext } from '../../contexts/messageContext';
 import { apiAdress } from '../../services/api';
 import { InputText } from '../../styles/components/inputText';
 import { LabelText } from '../../styles/components/label';
@@ -26,8 +26,8 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(()=>{
-    if(username===""){
-      setIsEnable("false")
+    if(username==="" || username===undefined){
+      setIsEnable(false)
     }
   },[])
   async function CheckUsername(event: {[k:string]: FormDataEntryValue}){

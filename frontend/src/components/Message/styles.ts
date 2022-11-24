@@ -21,6 +21,7 @@ export const Container = styled.div<styleType>`
   padding: 0.9vh 0.9vw;
   border-radius: 0.9vh;
   box-shadow: 0px 0px 3.6vh #000;
+  z-index: 6;
   
   animation:  ${styleType => styleType.animation} 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
   .title{
