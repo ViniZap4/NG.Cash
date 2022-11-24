@@ -45,9 +45,10 @@ export const Container = styled.div`
 
         display: flex;
         flex-direction: column;
+        flex-wrap: wrap;
         align-items: center;
         justify-content: center;
-
+        
         font-size: 2.1vh;
 
         margin: 0.9vh 0vw;
@@ -67,10 +68,28 @@ export const Container = styled.div`
       .backButton{
         margin-right: 0.9vw;
       }
+     
+    }
+    #loginButton{
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      
+      font-size: 2.1vh;
+
+      margin: 0.9vh 0vw;
+
+      padding: 1.2vh 0.9vw;
+      width: 100%;
+      background-color: ${props => props.theme.colors.boxBackground};
+      border-radius: 0.9vh;
+      box-shadow: 0px 0px 3vh #000;
+      animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     }
   }
-  @media screen and (orientation: portrait){
-    
+  @media screen and (orientation: portrait){  
     #signUpBox{
       width: 81vw;
     }

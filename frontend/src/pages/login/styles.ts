@@ -53,8 +53,6 @@ export const Container = styled.div`
         border-radius: 0.9vh;
         box-shadow: 0px 0px 3vh #000;
         animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-
-        
       }
       .loginButton{
         flex-grow: 1;
@@ -63,9 +61,23 @@ export const Container = styled.div`
         margin-right: 0.9vw;
       }
     }
-  
+
+    #signUp{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.1vh;
+      margin: 0.9vh 0vw;
+      width: 100%;
+      padding: 1.2vh 0.9vw;
+      background-color: ${props => props.theme.colors.boxBackground};
+      border-radius: 0.9vh;
+      box-shadow: 0px 0px 3vh #000;
+      animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
   }
-  
+
   @media screen and (orientation: portrait){
     .loginBox{
       width: 81vw;
