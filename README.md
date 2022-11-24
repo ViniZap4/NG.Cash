@@ -23,6 +23,8 @@ docker-compose up -d
 
 ```
 
+![docker compose up](./ReadmeAssets/docker-compose-up.png)
+
 Feito isso será necessario executar as *migrates* que foram feitas, para criar as tabelas no banco de dados, para esse projeto eu optei por usar o **_Prisma_** como *ORM* sendo assim poderá ser executado o compando `npx prisma migrate dev` no docker do **backend** que eu chamei de **api**, é possivel ver os containers que estão sendo executado com o seguinte comando `docker ps`
 
 
@@ -33,5 +35,6 @@ pegando o nome ou o id dos containers é possível executar o comando para execu
 docker exec -it ngcash-main-api-1 npx prisma migrate dev
 
 ```
+![npx prisma migrate dev](./ReadmeAssets/npx-migrate-dev.png)
 
 feito isso já é possivel executar o projeto
