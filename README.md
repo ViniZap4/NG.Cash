@@ -4,7 +4,7 @@ Para poder rodar o projeto será necessario ter o `nodejs` e `docker` instalado 
 
 Ao clonar o projeto será necessario instalar as dependencias tanto do **Backend** quanto do **Frontend** dando `npm i` tanto na pasta **_"backend"_** quanto na **_"frontend"_**.
 
-também será necessario criar o arquivo .env do backend com duas variáveis `DATABASE_URL` que representa a *URL* do banco de dados e `SECRET` sendo a chave do *token*
+também será necessario criar o arquivo **`.env`** dentro da pasta `backend` com duas variáveis `DATABASE_URL` que representa a *URL* do banco de dados e `SECRET` sendo a chave do *token*
 
 ``` env
 # URL já com os valores que foram setados pela docker
@@ -57,5 +57,3 @@ Os valores da conta dos usuário são checados a cada 1 segundo e atualizado cas
 E para as transições se é checado o valor do usuário antes de abilitar para enviar o valor para o usuário, possuindo todas as validações solicitados.
 
 ![transações](./ReadmeAssets/transacation.gif)
-
----
