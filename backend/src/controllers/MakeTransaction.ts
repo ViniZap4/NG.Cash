@@ -5,9 +5,11 @@ export default class MakeTransaction{
   async handle(req: Request, res: Response){
     const username = req.params.id
     const {usernameToCredit, value} = req.body;
+
     if (!usernameToCredit || !value) {
-      return res.status(422).json({"error": `All input shield are required`});
+      return res.status(422).json({"error": `Entrava invalida`});
     }
+
     const user = await prisma.user.findUnique({
       where:{
         id: username
@@ -20,15 +22,15 @@ export default class MakeTransaction{
     })
 
     if(user === null){
-      return res.status(404).json({"error": "this user don't exist"});
+      return res.status(404).json({"error": "Esse usuário não existe"});
     }
 
 
     if(!user.Account?.balance || user.Account?.balance < value){
-      return res.json({"error": "this account don't have enough funds"});
+      return res.json({"error": "Essa conta não tem fundos o suficiente"});
     }
     if(value <= 0 ){
-      return res.json({"error": "Invalid value"});
+      return res.json({"error": "Valor invalido"});
     }
     const userToCredit = await prisma.user.findUnique({
       where:{
@@ -41,15 +43,15 @@ export default class MakeTransaction{
     })
 
     if(userToCredit === null){
-      return res.status(404).json({"error": "credict user don't exist"});
+      return res.status(404).json({"error": "Usuario não existe"});
     }
 
     if(user.id === userToCredit.id){
-      return res.status(404).json({"error": "you can't send for yourserf"});
+      return res.status(404).json({"error": "Não pode eviar para si mesmo!"});
     }
 
     if(!userToCredit.Account){
-      return res.status(404).json({"error": "credict user don't have a account"});
+      return res.status(404).json({"error": "Usuario selecionado não tem conta"});
     }
     
     try{
@@ -87,7 +89,7 @@ export default class MakeTransaction{
       })
 
     }catch(error){
-      return res.status(422).json({"error": `Error in transaction`});
+      return res.status(422).json({"error": `Erro ao efetuar transação`});
     }
 
 

@@ -5,7 +5,6 @@ import CheckUser from "./controllers/CheckUser";
 import GetAllUser from "./controllers/GetAllUsers";
 import GetUser from "./controllers/GetUser";
 import CreateUser from "./controllers/CreateUser";
-import DeleteUser from "./controllers/DeleteUser";
 import AuthUser from "./controllers/AuthUser";
 
 import GetBalance from "./controllers/GetBalance";
@@ -29,9 +28,6 @@ router.get('/username/:username', checkUser.handle);
 
 const createUser = new CreateUser;
 router.post('/user', createUser.handle);
-
-const deleteUser = new DeleteUser;
-router.delete('/account/:id', deleteUser.handle);
 
 const authUser = new AuthUser;
 router.post('/auth', authUser.handle);

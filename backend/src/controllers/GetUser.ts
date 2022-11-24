@@ -28,7 +28,7 @@ export default class GetUser{
         })
 
         if(accountUser === null){
-          return res.status(404).json({"error": "this user don't exist", "username": null});
+          return res.status(404).json({"error": "Esse usuário não existe", "username": null});
         }
 
         const user = await prisma.user.findUnique({

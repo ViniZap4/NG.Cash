@@ -9,6 +9,10 @@ export default class AuthUser{
     try{
       const {username, password} = req.body;
 
+      if (!username || !password) {
+        return res.status(422).json({"error": `Entrava invalida`});
+      }
+
       const user = await prisma.user.findUnique({
         where:{
           username: username
@@ -37,14 +41,14 @@ export default class AuthUser{
             "token": token
           })
         }else{
-          throw new Error("security variable is not available");
+          throw new Error("Variavel de segurança não compativel");
         }
 
       }catch{
         return res.status(422).json(`ERROR`);
       }
     }catch(error){
-      return res.status(422).json({"error": `Error with server`});
+      return res.status(422).json({"error": `Erro durante a autenticação`});
     }
 
   }
