@@ -47,13 +47,13 @@ Feito isso já é possivel abrir o projeto
 > Lembrando que as validações acontecem tanto no servidor quanto no lado do cliente
 ---
 
-para o **login** e o **cadastro** eu criei um sistema inteligete que pega o valor do usuário e **verifica** na api se o **usuário tiver na pagina de login e o valor do usuário não existe ele abilita um botão de atalho para ir para a pagina de cadastro já preenchendo o valor do usuário apresentado** e caso estiver **na de cadastro gererá o mesmo atalho para o login se o valor do usuário já existe**.
+para o **login** e o **cadastro** eu criei um sistema inteligente que pega o valor do usuário e **verifica** na api se o **usuário tiver na pagina de login e o valor do usuário não existe ele habilita um botão de atalho para ir para a pagina de cadastro já preenchendo o valor do usuário apresentado** e caso estiver **na de cadastro gerará o mesmo atalho para o login se o valor do usuário já existe**.
 
 ![cadastro e login](./ReadmeAssets/login-e-cadastro.gif)
 
 ---
 
 Os valores da conta dos usuário são checados a cada 1 segundo e atualizado caso o usuário estiver logado com um token respectivo do seu usuário. 
-E para as transições se é checado o valor do usuário antes de abilitar para enviar o valor para o usuário, possuindo todas as validações solicitados.
+E para as transições se é checado o valor do usuário antes de habilitar para enviar o valor para o usuário, possuindo todas as validações solicitados.
 
 ![transações](./ReadmeAssets/transacation.gif)
