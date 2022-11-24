@@ -4,12 +4,12 @@ volumes:
   data:
 
 services:
-  db_data:
+  db_postgres:
     image: postgres:15.1-alpine
     restart: always
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgresUser
+      POSTGRES_PASSWORD: postgresPassword
     ports:
      - "5434:5432"
     volumes:
@@ -31,7 +31,7 @@ services:
       - backend
       - frontend
     depends_on:
-      - db_data
+      - db_postgres
 
   web:
     image: node:16.14

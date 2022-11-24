@@ -8,7 +8,7 @@ export const Container = styled.div`
   width: 100%;
   min-height:10vh;
   margin-top: 3vh;
-  background-color: ${props => props.theme.colors.boxBackground};
+  background-color: ${props => props.theme.colors.secundary};
   border-radius: 0.9vh;
   box-shadow: 0px 0px 2.1vh #000;
   animation: scale-in-center 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -34,7 +34,7 @@ export const Container = styled.div`
       align-items: center;
       justify-content: space-evenly;
       padding: 0.9vh 0vw;
-      border-bottom: 1.8vh solid ${props => props.theme.colors.background};
+      border-bottom: 1.8vh solid ${props => props.theme.colors.secundary};
 
       
       h4{
@@ -59,7 +59,7 @@ export const Container = styled.div`
           display: flex;
           height:1.8vh;
           width: 1.8vh;
-          background-color: ${props => props.theme.colors.background};
+          background-color: ${props => props.theme.colors.secundary};
           cursor: pointer;
         }
         label{
@@ -78,7 +78,7 @@ export const Container = styled.div`
           font-size: 1.8vh;
           line-height: inherit;
           border-radius: 0.6vh;
-          border: 0.3vh solid ${props => props.theme.colors.background};
+          border: 0.3vh solid ${props => props.theme.colors.secundary};
         }
       }
       .buttonFilter{
@@ -87,8 +87,8 @@ export const Container = styled.div`
         justify-content: center;
         padding: 0.9vh 1.8vw;
         font-size: 2.1vh;
-        background-color: ${props => props.theme.colors.background};
-        color: ${props => props.theme.colors.boxBackground};
+        background-color: ${props => props.theme.colors.secundary};
+        color: ${props => props.theme.colors.secundary};
         border-radius: 0.6vh;
       }
     }

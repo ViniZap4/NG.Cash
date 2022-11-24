@@ -6,8 +6,8 @@ export const InputText = styled.input`
   margin: 1.2vh 1.2vw;
   margin-bottom: 3vh;
   border-bottom: 0.36vh solid #ccc;
-  color: ${props => props.theme.colors.text};
+  color: ${props => props.theme.colors.primary};
   &:focus{
-    border-bottom: 0.36vh solid ${props => props.theme.colors.text};
+    border-bottom: 0.36vh solid ${props => props.theme.colors.primary};
   }
 `

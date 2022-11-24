@@ -19,7 +19,7 @@ const Home: React.FC = () => {
   const [balanceValue, setBalanceValue] = useState("***********")
   const [tranferencesVisible, setTranferencesVisible] = useState(false)
   const [tranferenceVisible, setTranferenceVisible] = useState(false)
-  const {balance, setBalance} = useContext(UserContext)
+  const {setBalance} = useContext(UserContext)
   const {setMessage, setHasMessage, setTime} = useContext(MessageContext)
 
   useEffect(()=>{

@@ -6,7 +6,7 @@ export const Container = styled.div`
   align-items: center;
   width: 100vw;
   min-height: 100vh;
-  background-color: ${props => props.theme.colors.background};
+  background-color: ${props => props.theme.colors.primary};
 
   .titleBox{
     display: flex;
@@ -24,21 +24,21 @@ export const Container = styled.div`
     }
     .balanceBox{
       
-      color: ${props => props.theme.colors.boxBackground};
+      color: ${props => props.theme.colors.secundary};
       width: 100%;
       .balanceValue{
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: ${props => props.theme.colors.boxBackground};
+        background-color: ${props => props.theme.colors.secundary};
         padding: 1.8vh 2.1vw;
         border-radius: 0.9vh;
         box-shadow: 0px 0px 2.7vh #000;
         animation: scale-in-center 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 
         
-        color: ${props => props.theme.colors.background};
+        color: ${props => props.theme.colors.primary};
         .head{
           display: flex;
           flex-direction: row;
@@ -49,7 +49,7 @@ export const Container = styled.div`
           
           .HeadTitle{
             font-size: 2.7vh;
-            color: ${props => props.theme.colors.background};
+            color: ${props => props.theme.colors.primary};
           }
           .visibleButton{
             display: flex;
@@ -57,7 +57,7 @@ export const Container = styled.div`
             justify-content: center;
             width: 50px;
             box-shadow: 0px 0px 2.7vh #00000099;
-            background-color: ${props=> props.theme.colors.background};
+            background-color: ${props=> props.theme.colors.primary};
             padding: 0.45vh;
             border-radius: 0.9vh;
             overflow: hidden;
@@ -72,10 +72,10 @@ export const Container = styled.div`
           align-items: center;
           justify-content: center;
          
-          color: ${props => props.theme.colors.boxBackground};
+          color: ${props => props.theme.colors.secundary};
           width: max-content;  
           min-width: 50%;
-          background-color: ${props => props.theme.colors.background};
+          background-color: ${props => props.theme.colors.primary};
           border-radius: 0.9vh;
           box-shadow: 0px 0px 2.7vh #00000066;
           animation: scale-in-center 0.72s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;

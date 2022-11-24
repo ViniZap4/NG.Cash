@@ -11,9 +11,7 @@ export const Container = styled.div`
   left: 0;
   width: 100%;
   height: max-content;
-  //background-color: ${props=> props.theme.colors.background};
   z-index: 5;
-  //box-shadow: 0px 0px 0.9vh #000;
 
   .logoContainer{
     display: flex;

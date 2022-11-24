@@ -7,7 +7,7 @@ export const Container = styled.div`
   justify-content: space-evenly;
   width: 100vw;
   height: 100vh;
-  background-color: ${props => props.theme.colors.background};
+  background-color: ${props => props.theme.colors.primary};
 
   .loginBox{
     display: flex;
@@ -19,7 +19,7 @@ export const Container = styled.div`
     .loginInput{
       display: flex;
       flex-direction: column;
-      background-color: ${props => props.theme.colors.boxBackground};
+      background-color: ${props => props.theme.colors.secundary};
       border-radius: 0.9vh;
       box-shadow: 0px 0px 3vh #000;
       width: 100%;
@@ -49,7 +49,7 @@ export const Container = styled.div`
 
         padding: 1.2vh 0.9vw;
 
-        background-color: ${props => props.theme.colors.boxBackground};
+        background-color: ${props => props.theme.colors.secundary};
         border-radius: 0.9vh;
         box-shadow: 0px 0px 3vh #000;
         animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -71,7 +71,7 @@ export const Container = styled.div`
       margin: 0.9vh 0vw;
       width: 100%;
       padding: 1.2vh 0.9vw;
-      background-color: ${props => props.theme.colors.boxBackground};
+      background-color: ${props => props.theme.colors.secundary};
       border-radius: 0.9vh;
       box-shadow: 0px 0px 3vh #000;
       animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;

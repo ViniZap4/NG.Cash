@@ -22,7 +22,6 @@ const Tranference: React.FC = () => {
     CheckBalance()
   },[])
 
-
   async function CheckUsername(event: {[k:string]: FormDataEntryValue}){
     try{
       await axios(`${apiAdress}/username/${event.username}`).then(response => {
