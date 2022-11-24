@@ -87,7 +87,7 @@ export const Container = styled.div`
         justify-content: center;
         padding: 0.9vh 1.8vw;
         font-size: 2.1vh;
-        background-color: ${props => props.theme.colors.secundary};
+        background-color: ${props => props.theme.colors.primary};
         color: ${props => props.theme.colors.secundary};
         border-radius: 0.6vh;
       }

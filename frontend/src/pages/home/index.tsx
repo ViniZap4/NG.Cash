@@ -19,7 +19,7 @@ const Home: React.FC = () => {
   const [balanceValue, setBalanceValue] = useState("***********")
   const [tranferencesVisible, setTranferencesVisible] = useState(false)
   const [tranferenceVisible, setTranferenceVisible] = useState(false)
-  const {setBalance} = useContext(UserContext)
+  const {balance,setBalance} = useContext(UserContext)
   const {setMessage, setHasMessage, setTime} = useContext(MessageContext)
 
   useEffect(()=>{
@@ -30,13 +30,18 @@ const Home: React.FC = () => {
 
   useEffect(()=>{
     const interval = setInterval(() => {
-      if(tranferenceVisible){
         CheckBalance()
-      }
-    }, 5000);
+    }, 1000);
 
     return () => clearInterval(interval);
-}, []);
+ }, []);
+
+ useEffect(()=>{
+    if(tranferenceVisible){
+      setBalanceValue(balance.toString())
+      console.log("check")
+    }
+  }, [balance]);
 
 
   async function handleVisible(){
@@ -45,12 +50,12 @@ const Home: React.FC = () => {
       setBalanceVisible(false)
       return
     }
-    CheckBalance()
+    CheckBalance(true)
     setBalanceVisible(true)
 
   }
 
-  async function CheckBalance(){
+  async function CheckBalance(updateValue:boolean = false){
     try{
       await axios.get(`${apiAdress}/balance/${cookies.userID}`, {
         headers: {
@@ -58,9 +63,10 @@ const Home: React.FC = () => {
         }
       })
       .then((res) => {
-        setBalanceValue(res.data.Account.balance.toFixed(2))
+        if(updateValue){
+          setBalanceValue(res.data.Account.balance.toFixed(2))
+        }
         setBalance(res.data.Account.balance.toFixed(2))
-        console.log("check")
       })
       .catch((error) => {
         console.log(error)
