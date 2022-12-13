@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import prisma from "../database/prismaClient";
-import { hash } from "bcrypt";7
+import { hash } from "bcrypt";
 
 import {Size, checkPassword} from "../util/checkString";
 
